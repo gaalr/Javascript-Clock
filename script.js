@@ -1,29 +1,16 @@
-function colorClock() {
-  var date = new Date();
+// Function to update the time on the clock
+function updateClock() {
+	const now = new Date(); // Get the current date and time
+	const hours = now.getHours().toString().padStart(2, '0'); // Format hours (always 2 digits)
+	const minutes = now.getMinutes().toString().padStart(2, '0'); // Format minutes (always 2 digits)
+	const seconds = now.getSeconds().toString().padStart(2, '0'); // Format seconds (always 2 digits)
 
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var seconds = date.getSeconds();
-
-  if (hours <= 9) {
-    hours = "0" + hours;
-  }
-  if (minutes <= 9) {
-    minutes = "0" + minutes;
-  }
-  if (seconds <= 9) {
-    seconds = "0" + seconds;
-  }
-
-  var clockFace = hours + ":" + minutes + ":" + seconds;
-  var hexColor = "#" + hours + minutes + seconds;
-
-  document.getElementById("clock").innerHTML = clockFace;
-  document.body.style.background = hexColor;
-
-  setTimeout(function () {
-    colorClock();
-  }, 1000);
+	const timeString = `${hours}:${minutes}:${seconds}`; // Combine the time parts into a string
+	document.getElementById('clock').textContent = timeString; // Display the time in the clock element
 }
 
-colorClock();
+// Update the clock every second
+setInterval(updateClock, 1000);
+
+// Initial update of the clock when the page loads
+updateClock();

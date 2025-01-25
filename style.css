@@ -1,21 +1,57 @@
+/* Basic styles for all elements */
 * {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-#clock {
-  text-align: center;
-  font-family: "Exo 2", sans-serif;
-  font-size: 68px;
-  margin-top: -34px;
-}
-html,
+/* Body styling: Sets the background gradient, centers the content, and changes text color */
 body {
-  height: 100%;
+	font-family: 'Roboto', sans-serif;
+	background: linear-gradient(
+		135deg,
+		#00c6ff,
+		#0072ff
+	); /* Beautiful gradient background */
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	text-align: center;
+	margin: 0;
 }
 
-#clock {
-  text-align: center;
-  position: relative;
-  bottom: -50%;
+/* Clock styling: Big font size, background, and some padding and shadow for a nice look */
+.clock {
+	font-size: 5rem; /* Large text for the time */
+	font-weight: 700;
+	background: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+	border-radius: 20px;
+	padding: 40px 60px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow effect */
+	transition: transform 0.5s ease; /* Smooth transition when hovered */
+}
+
+/* Hover effect to make the clock grow slightly */
+.clock:hover {
+	transform: scale(1.1); /* Slight increase in size on hover */
+}
+
+/* Text shadow animation for a glowing effect */
+@keyframes glow {
+	0% {
+		text-shadow: 0 0 10px #00c6ff, 0 0 20px #00c6ff, 0 0 30px #00c6ff;
+	}
+	50% {
+		text-shadow: 0 0 20px #00c6ff, 0 0 40px #00c6ff, 0 0 60px #00c6ff;
+	}
+	100% {
+		text-shadow: 0 0 10px #00c6ff, 0 0 20px #00c6ff, 0 0 30px #00c6ff;
+	}
+}
+
+/* Apply the glowing animation to the clock */
+.clock {
+	animation: glow 1.5s infinite alternate;
 }
